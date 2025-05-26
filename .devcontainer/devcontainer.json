@@ -1,0 +1,6 @@
+{
+	"name": "Node + TS (global)",
+	"build": { 
+	  "dockerfile": "Dockerfile"
+	}
+  }

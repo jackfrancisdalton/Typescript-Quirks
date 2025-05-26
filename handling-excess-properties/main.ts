@@ -14,8 +14,8 @@ const user1: User = person;
 
 // As a result you get some odd behaviour where you can have key/values existing an object typescript is not aware of:
 [user2, user1].forEach(user => {
-    console.log(user.name);     // Charlie, Bob
-    console.log(user["age"]);   // undefined, 30
+    console.log(user.name);     // prints: Charlie, Bob
+    console.log(user["age"]);   // prints: undefined, 30
 });
 
 

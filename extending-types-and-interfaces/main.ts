@@ -13,7 +13,7 @@ const validChild: Child = { a: 1, b: "hello" };
 type ParentType = { y: number; x: number; };
 type ChildType = ParentType & { x: string; }; 
 
-// This results in the equivalent of the following type:
+// 🌟 QUIRK: This results in the equivalent of the following type:
 // type ChildType = {
 //     y: number;
 //     x: never;      <-- because number & string = never
@@ -27,3 +27,6 @@ const C: ChildType = { y: 1, x: null };      // ❌ This is not valid as `x` is 
 const D: ChildType = { y: 1, x: 10 };        // ❌ This is not valid as `x` is never
 
 
+// 🧠 TAKEAWAY:
+// - When extending interfaces, TypeScript merges the properties, and warns us if keys have non compatible types (like string vs number).
+// - When combining types, TypeScript happily intersects the types, but if the types are incompatible (like number & string), it results in `never`.

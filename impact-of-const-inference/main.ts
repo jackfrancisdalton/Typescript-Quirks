@@ -6,7 +6,7 @@ const y = { a: 1 } as const; // changes type to { a : 1 } instead of { a: number
 const a: typeof x = { a: 1 };          // ✅ This is valid as `a` can be any number
 const b: typeof x = { a: 2 };          // ✅ This is valid as `a` can be any number
 
-// However with `y` being { a: 1 } we can only assign the value 1 to `a`
+// 🌟 QUIRK: with `y` being { a: 1 } we can only assign the value 1 to `a`
 const c: typeof y = { a: 1 };          // ✅ This is valid as `a` is 1
 const d: typeof y = { a: 2 };          // ❌ This is not valid as `a` can only be 1
 
@@ -25,3 +25,7 @@ const tupleD: typeof tuple = [1, 2, 1];  // ❌ Invalid as the tuple can only be
 const arrayA: typeof array = [1, 2];     // ✅ This is valid as the array can be any number[]
 const arrayB: typeof array = [1, 3];     // ✅ This is valid as the array can be any number[]
 const arrayC: typeof array = [1, 2, 1];  // ✅ This is valid as the array can be any number[]
+
+
+// 🧠 TAKEAWAY:
+// - Using `as const` inference restricts the values of a variable to only the defined values, which can be useful for constants.

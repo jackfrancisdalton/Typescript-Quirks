@@ -17,3 +17,9 @@ const user1: User = person;
     console.log(user.name);     // Charlie, Bob
     console.log(user["age"]);   // undefined, 30
 });
+
+
+// 🧠 TAKEAWAY:
+// - If you define an object without a type and then assign it to a type, TypeScript will not warn you about excessive properties.
+// - This can lead to unexpected behaviour when you, for example, print the properties of the object, or lead to security risks if you expect certain properties to be present.
+// - Recommendation: Always define types for your objects to ensure TypeScript can catch these issues at compile time.
